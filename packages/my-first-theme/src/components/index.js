@@ -48,6 +48,7 @@ const Root = ({ state, actions }) => {
   const data = state.source.get(state.router.link)
   console.log("state", state);
   console.log("actions", actions);
+  console.log("data", data);
 
   return (
     <Global>
@@ -63,6 +64,8 @@ const Root = ({ state, actions }) => {
           <Link link="/page/2">More posts</Link>
           <br />
           <Link link="/about-us">About Us</Link>
+          <br />
+          <Link link="/destinations">Destinations</Link>
         </Menu>
       </Header>
       <hr />
@@ -71,6 +74,7 @@ const Root = ({ state, actions }) => {
           <List when={data.isArchive}>This is a list</List>
           <Post when={data.isPost}>This is a post</Post>
           <Page when={data.isPage}>This is a page</Page>
+          <Page when={data.isDestinations}> This is a destination</Page>
         </Switch>
       </main>
 

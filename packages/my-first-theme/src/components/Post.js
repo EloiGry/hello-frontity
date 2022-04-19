@@ -3,14 +3,11 @@
 import React from "react"
 import { connect } from "frontity"
 
-const Post = ({ state }) => {
+const Post = ({ state, libraries }) => {
   const data = state.source.get(state.router.link)
   const post = state.source[data.type][data.id]
   const author = state.source.author[post.author]
-
-  console.log("data", data);
-  console.log("post", post);
-  console.log("author", author);
+  const Html2React = libraries.html2react.Component
 
   return (
     <div>
@@ -23,7 +20,7 @@ const Post = ({ state }) => {
         <strong>Author: </strong>
         {author.name}
       </p>
-      <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+      <Html2React html={post.content.rendered} />
     </div>
   )
 }
